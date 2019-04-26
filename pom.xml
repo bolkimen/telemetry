@@ -3,8 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.blogspot.mvnblogbuild</groupId>
-    <artifactId>telemetry</artifactId>
+    <groupId>com.blogspot.mvnblogbuild.telemetry</groupId>
+    <artifactId>parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>telemetry</name>
     <packaging>pom</packaging>
@@ -14,13 +14,17 @@
         <module>zuul-server</module>
         <module>eureka-server</module>
         <module>data-receiver-service</module>
+        <module>data-producer</module>
+        <module>commons</module>
     </modules>
 
     <properties>
+        <java.version>1.8</java.version>
         <spring-boot-maven-plugin.version>2.0.1.RELEASE</spring-boot-maven-plugin.version>
         <commons-config.version>1.10</commons-config.version>
         <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
         <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
+        <lombok.version>1.16.16</lombok.version>
     </properties>
 
 </project>

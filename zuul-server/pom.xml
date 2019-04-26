@@ -5,8 +5,8 @@
 	<name>zuul-server</name>
     
     <parent>
-        <groupId>com.blogspot.mvnblogbuild</groupId>
-        <artifactId>telemetry</artifactId>
+        <groupId>com.blogspot.mvnblogbuild.telemetry</groupId>
+        <artifactId>parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     
@@ -42,5 +42,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

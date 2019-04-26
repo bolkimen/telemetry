@@ -2,15 +2,15 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>eureka-client</artifactId>
+    <artifactId>data-receiver-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>eureka-client</name>
+    <name>data-receiver-service</name>
     <packaging>jar</packaging>
-    <description>Telemetry data service</description>
+    <description>Telemetry data receiver service</description>
 
     <parent>
-        <groupId>com.blogspot.mvnblogbuild</groupId>
-        <artifactId>telemetry</artifactId>
+        <groupId>com.blogspot.mvnblogbuild.telemetry</groupId>
+        <artifactId>parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -29,6 +29,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.blogspot.mvnblogbuild.telemetry</groupId>
+            <artifactId>commons</artifactId>
+            <version>${version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -42,5 +54,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
