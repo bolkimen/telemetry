@@ -1,4 +1,5 @@
 # telemetry
+The main idea is taken from https://towardsdatascience.com/lambda-architecture-how-to-build-a-big-data-pipeline-part-1-8b56075e83fe
 
 Pipeline start:
 1. Start Eureka server<br>
