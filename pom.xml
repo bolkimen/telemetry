@@ -13,7 +13,7 @@
     <modules>
         <module>zuul-server</module>
         <module>eureka-server</module>
-        <module>eureka-client</module>
+        <module>data-receiver-service</module>
     </modules>
 
     <properties>
