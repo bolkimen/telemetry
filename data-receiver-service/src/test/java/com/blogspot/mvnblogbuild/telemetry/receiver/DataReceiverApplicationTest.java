@@ -22,12 +22,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = EurekaClientApplication.class)
+@SpringBootTest(classes = DataReceiverApplication.class)
 @AutoConfigureMockMvc
-public class EurekaClientApplicationTest {
+public class DataReceiverApplicationTest {
 
     @Autowired
     private MockMvc mvc;
+
+    @Autowired
+    private DataReceiverApplication dataReceiverApplication;
 
     @MockBean
     private EurekaClient eurekaClient;
@@ -48,8 +51,8 @@ public class EurekaClientApplicationTest {
                 .content(objectMapper.writeValueAsString(data))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string(format("Receive data %s from '%s with Port Number -1'!",
-                        data, app.getName())));
+                .andExpect(MockMvcResultMatchers.content().string(format("Receive data %s from '%s with Port Number %d'!",
+                        data, app.getName(), dataReceiverApplication.getApplicationId())));
     }
 
 }

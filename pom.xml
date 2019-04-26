@@ -24,6 +24,7 @@
         <commons-config.version>1.10</commons-config.version>
         <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
         <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
+        <maven.compiler.plugin>3.5</maven.compiler.plugin>
         <lombok.version>1.16.16</lombok.version>
     </properties>
 

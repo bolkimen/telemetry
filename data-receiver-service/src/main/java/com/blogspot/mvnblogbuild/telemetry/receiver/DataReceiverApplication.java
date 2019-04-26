@@ -8,15 +8,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.Random;
 
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
-public class EurekaClientApplication implements GreetingController {
+public class DataReceiverApplication implements DataReaderController {
     @Autowired
     @Lazy
     private EurekaClient eurekaClient;
@@ -24,17 +26,20 @@ public class EurekaClientApplication implements GreetingController {
     @Value("${spring.application.name}")
     private String appName;
 
-    @Value("${server.port}")
-    private String portNumber;
+    private int applicationId = (new Random()).nextInt();
 
     public static void main(String[] args) {
-        SpringApplication.run(EurekaClientApplication.class, args);
+        SpringApplication.run(DataReceiverApplication.class, args);
+    }
+
+    public int getApplicationId() {
+        return applicationId;
     }
 
     @Override
     public String greeting() {
         return String.format("Hello from '%s with Port Number %s'!", eurekaClient.getApplication(appName)
-            .getName(), portNumber);
+            .getName(), applicationId);
     }
 
     @Override
@@ -42,6 +47,6 @@ public class EurekaClientApplication implements GreetingController {
         return String.format("Receive data %s from '%s with Port Number %s'!",
                 data,
                 eurekaClient.getApplication(appName).getName(),
-                portNumber);
+                applicationId);
     }
 }

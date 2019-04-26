@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 
-public interface GreetingController {
+public interface DataReaderController {
     @RequestMapping("/greeting")
     String greeting();
 
