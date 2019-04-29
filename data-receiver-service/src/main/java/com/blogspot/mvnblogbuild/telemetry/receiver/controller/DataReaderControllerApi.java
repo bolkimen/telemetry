@@ -1,4 +1,4 @@
-package com.blogspot.mvnblogbuild.telemetry.receiver;
+package com.blogspot.mvnblogbuild.telemetry.receiver.controller;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
 import org.springframework.http.MediaType;
@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 
-public interface DataReaderController {
-    @RequestMapping("/greeting")
-    String greeting();
+public interface DataReaderControllerApi {
+
+    @RequestMapping("/healthCheck")
+    String healthCheck();
 
     @RequestMapping(method = RequestMethod.PUT,
             value = "/reader",

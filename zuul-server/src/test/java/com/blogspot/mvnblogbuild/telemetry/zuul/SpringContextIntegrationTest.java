@@ -1,4 +1,4 @@
-package com.blogspot.mvnblogbuild.telemetry.zuul.config;
+package com.blogspot.mvnblogbuild.telemetry.zuul;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

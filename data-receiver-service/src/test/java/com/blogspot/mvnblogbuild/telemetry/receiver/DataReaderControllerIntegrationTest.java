@@ -1,6 +1,7 @@
 package com.blogspot.mvnblogbuild.telemetry.receiver;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
+import com.blogspot.mvnblogbuild.telemetry.receiver.controller.DataReaderController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
@@ -24,13 +25,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DataReceiverApplication.class)
 @AutoConfigureMockMvc
-public class DataReceiverApplicationTest {
+public class DataReaderControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Autowired
-    private DataReceiverApplication dataReceiverApplication;
+    private DataReaderController dataReaderController;
 
     @MockBean
     private EurekaClient eurekaClient;
@@ -52,7 +53,7 @@ public class DataReceiverApplicationTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(format("Receive data %s from '%s with Port Number %d'!",
-                        data, app.getName(), dataReceiverApplication.getApplicationId())));
+                        data, app.getName(), dataReaderController.getApplicationId())));
     }
 
 }
