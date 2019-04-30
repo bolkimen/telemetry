@@ -22,3 +22,7 @@ docker-compose up
 Here you can check
 1. Load balancer: http://localhost:8762/data-receiver-service/greeting
 1. Eureka admin page: http://localhost:8761/
+
+**Debugging**<br/>
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Telemetry --from-beginning<br/>
+./kafka-console-producer.sh     --broker-list localhost:9092     --topic Telemetry

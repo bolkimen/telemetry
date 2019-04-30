@@ -1,6 +1,6 @@
 spring:
   application:
-    name: data-receiver-service
+    name: data-storage-service
 
 server:
   port: 0
