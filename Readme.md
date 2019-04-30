@@ -10,29 +10,32 @@ mvn spring-boot:run
 cd ./zuul-server<br>
 mvn spring-boot:run
 
-1. Start Kafka for data transfer
-cd ./KafkaAndCassandra
+1. Start Kafka for data transfer<br/>
+cd ./KafkaAndCassandra<br/>
 docker-compose up
    
 1. Start data receiver instance<br>
 cd ./data-receiver-service<br>
 mvn spring-boot:run
 
-1. Start data storage instance
-cd ./data-storage-service
+1. Start data storage instance<br/>
+cd ./data-storage-service<br/>
 mvn spring-boot:run
 
-1. Start data producer
-cd ./data-producer
+1. Start data producer<br/>
+cd ./data-producer<br/>
 mvn exec:java
 
-1. Check stats:
-http://localhost:8762/data-storage-service/stats
+1. Check stats (secured area):<br/>
+http://localhost:8762/data-storage-service/stats<br/>
+User credentials:<br/>
+username: admin<br/>
+password: password
 
 Here you can check
-1. Load balancer and data receiver: http://localhost:8762/data-receiver-service/greeting
+1. Load balancer and data receiver: http://localhost:8762/data-receiver-service/healthCheck
 1. Eureka admin page: http://localhost:8761/
 
-**Debugging**<br/>
+**Debugging kafka data flow**<br/>
 ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Telemetry --from-beginning<br/>
 ./kafka-console-producer.sh     --broker-list localhost:9092     --topic Telemetry
