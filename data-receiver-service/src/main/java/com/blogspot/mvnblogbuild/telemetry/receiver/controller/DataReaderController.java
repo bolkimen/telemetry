@@ -1,7 +1,7 @@
-package com.blogspot.mvnblogbuild.telemetry.storage.controller;
+package com.blogspot.mvnblogbuild.telemetry.receiver.controller;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
-import com.blogspot.mvnblogbuild.telemetry.storage.service.DeviceDataService;
+import com.blogspot.mvnblogbuild.telemetry.receiver.service.DeviceDataService;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

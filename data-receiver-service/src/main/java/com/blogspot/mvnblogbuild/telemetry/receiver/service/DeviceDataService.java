@@ -1,4 +1,4 @@
-package com.blogspot.mvnblogbuild.telemetry.storage.service;
+package com.blogspot.mvnblogbuild.telemetry.receiver.service;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
 import org.slf4j.Logger;

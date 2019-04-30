@@ -1,7 +1,8 @@
 package com.blogspot.mvnblogbuild.telemetry.storage;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
-import com.blogspot.mvnblogbuild.telemetry.storage.controller.DataReaderController;
+import com.blogspot.mvnblogbuild.telemetry.receiver.DataReceiverApplication;
+import com.blogspot.mvnblogbuild.telemetry.receiver.controller.DataReaderController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;

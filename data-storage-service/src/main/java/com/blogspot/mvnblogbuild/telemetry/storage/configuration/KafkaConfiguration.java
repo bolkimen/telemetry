@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
-import org.springframework.kafka.support.serializer.JsonSerializer;
+import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +33,10 @@ public class KafkaConfiguration {
                 StringDeserializer.class);
         props.put(
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
-                JsonSerializer.class);
+                JsonDeserializer.class);
+        props.put(
+                JsonDeserializer.TRUSTED_PACKAGES,
+                "com.blogspot.mvnblogbuild.telemetry.commons.dto");
         return new DefaultKafkaConsumerFactory<>(props);
     }
 

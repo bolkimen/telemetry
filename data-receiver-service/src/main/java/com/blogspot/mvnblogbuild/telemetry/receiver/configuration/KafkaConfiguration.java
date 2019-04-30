@@ -1,4 +1,4 @@
-package com.blogspot.mvnblogbuild.telemetry.storage.configuration;
+package com.blogspot.mvnblogbuild.telemetry.receiver.configuration;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
 import org.apache.kafka.clients.producer.ProducerConfig;

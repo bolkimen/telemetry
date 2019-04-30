@@ -1,4 +1,4 @@
-package com.blogspot.mvnblogbuild.telemetry.storage.configuration;
+package com.blogspot.mvnblogbuild.telemetry.receiver.configuration;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;

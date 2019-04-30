@@ -1,4 +1,4 @@
-package com.blogspot.mvnblogbuild.telemetry.storage;
+package com.blogspot.mvnblogbuild.telemetry.producer;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -61,7 +61,7 @@ public class DataProducerApplication {
         DeviceDataDTO data = new DeviceDataDTO();
         data.setGroupName(i % 2 == 0 ? "group 1" : null);
         data.setSerialNumber("device-" + i);
-        data.setValue(i * 100l);
+        data.setValue(i * 100l + 100);
         return data;
     }
 

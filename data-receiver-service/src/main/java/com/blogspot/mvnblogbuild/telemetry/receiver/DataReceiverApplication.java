@@ -1,4 +1,4 @@
-package com.blogspot.mvnblogbuild.telemetry.storage;
+package com.blogspot.mvnblogbuild.telemetry.receiver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

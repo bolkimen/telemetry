@@ -9,18 +9,28 @@ mvn spring-boot:run
 1. Start Zuul proxy<br>
 cd ./zuul-server<br>
 mvn spring-boot:run
-   
-1. Start two data receiver instances<br>
-cd ./data-receiver-service<br>
-mvn spring-boot:run -Dserver.port=23486<br>
-mvn spring-boot:run -Dserver.port=23487
 
-1. Start Kafka and Cassandra for data transfer and storage
+1. Start Kafka for data transfer
 cd ./KafkaAndCassandra
 docker-compose up
+   
+1. Start data receiver instance<br>
+cd ./data-receiver-service<br>
+mvn spring-boot:run
+
+1. Start data storage instance
+cd ./data-storage-service
+mvn spring-boot:run
+
+1. Start data producer
+cd ./data-producer
+mvn exec:java
+
+1. Check stats:
+http://localhost:8762/data-storage-service/stats
 
 Here you can check
-1. Load balancer: http://localhost:8762/data-receiver-service/greeting
+1. Load balancer and data receiver: http://localhost:8762/data-receiver-service/greeting
 1. Eureka admin page: http://localhost:8761/
 
 **Debugging**<br/>

@@ -1,4 +1,4 @@
-package com.blogspot.mvnblogbuild.telemetry.storage.controller;
+package com.blogspot.mvnblogbuild.telemetry.receiver.controller;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
 import org.springframework.http.MediaType;
