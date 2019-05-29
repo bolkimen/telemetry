@@ -13,7 +13,7 @@
     <modules>
         <module>zuul-server</module>
         <module>eureka-server</module>
-	<module>data-receiver-service</module>
+	    <module>data-receiver-service</module>
         <module>data-storage-service</module>
         <module>data-producer</module>
         <module>commons</module>
@@ -27,6 +27,23 @@
         <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
         <maven.compiler.plugin>3.5</maven.compiler.plugin>
         <lombok.version>1.16.16</lombok.version>
+        <dockerfile-maven-plugin-version>1.4.10</dockerfile-maven-plugin-version>
+
+        <docker.registry>telemetry</docker.registry>
+        <docker.tag>${project.version}</docker.tag>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${dockerfile-maven-plugin-version}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
