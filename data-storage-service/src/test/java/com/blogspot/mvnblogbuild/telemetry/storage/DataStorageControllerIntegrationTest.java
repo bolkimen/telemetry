@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static java.lang.String.format;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -49,8 +48,7 @@ public class DataStorageControllerIntegrationTest {
 
         mvc.perform(get("/stats"))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string(format("Receive data %s from '%s with Port Number %d'!",
-                        data, app.getName())));
+                .andExpect(MockMvcResultMatchers.content().string("{\"totalRecords\":0,\"averageValue\":0}"));
     }
 
 }
