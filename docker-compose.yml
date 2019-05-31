@@ -13,6 +13,8 @@ services:
     image: wurstmeister/kafka:2.11-2.0.0
     depends_on:
       - zookeeper
+    expose:
+      - "9092"
     ports:
       - "9092:9092"
     environment:
@@ -26,6 +28,8 @@ services:
     image: telemetry/eureka-server:1.0.0-SNAPSHOT
     expose:
       - "8761"
+    ports:
+    - "8761:8761"
     networks:
     - telemetry-network
 
@@ -38,7 +42,7 @@ services:
     depends_on:
       - eureka-server
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+      EUREKA_URI: http://eureka-server:8761/eureka
     networks:
     - telemetry-network
 
@@ -50,7 +54,8 @@ services:
       - kafka
       - zuul-server
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+      EUREKA_URI: http://eureka-server:8761/eureka
+      KAFKA_HOST_PORT: kafka:9092
     networks:
     - telemetry-network
 
@@ -62,7 +67,8 @@ services:
       - kafka
       - data-storage-service
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+      EUREKA_URI: http://eureka-server:8761/eureka
+      KAFKA_HOST_PORT: kafka:9092
     networks:
     - telemetry-network
 

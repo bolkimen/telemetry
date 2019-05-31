@@ -14,5 +14,5 @@ eureka:
 
 kafka:
   servers:
-    config: 127.0.0.1:9092
+    config: ${KAFKA_HOST_PORT:localhost:9092}
   topic: TTelemetry

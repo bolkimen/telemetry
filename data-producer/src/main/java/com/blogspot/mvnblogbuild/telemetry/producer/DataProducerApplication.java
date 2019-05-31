@@ -13,6 +13,10 @@ import java.util.stream.Stream;
 public class DataProducerApplication {
     private static final Integer AMOUNT_OF_EMULATED_DEVICES = 3;
 
+    private static String getReceiverServiceURL() {
+        return System.getenv("RECEIVER_URI") != null ? System.getenv("RECEIVER_URI") : "http://localhost:8762/data-receiver-service/reader";
+    }
+
     public static void main(String[] args) throws JsonProcessingException {
         Request[] requests = new Request[AMOUNT_OF_EMULATED_DEVICES];
 
@@ -27,7 +31,7 @@ public class DataProducerApplication {
 
             for (int i = 0; i < AMOUNT_OF_EMULATED_DEVICES; i++) {
                 requests[i] = new RequestBuilder(HttpConstants.Methods.PUT)
-                        .setUrl("http://localhost:8762/data-receiver-service/reader")
+                        .setUrl(getReceiverServiceURL())
                         .setBody(objectMapper.writeValueAsString(createDeviceDataDTO(i)))
                         .setHeader("Content-Type", "application/json")
                         .build();
