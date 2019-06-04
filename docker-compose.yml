@@ -7,7 +7,7 @@ services:
     expose:
       - "2181"
     networks:
-    - telemetry-network
+      - telemetry-network
 
   kafka:
     image: wurstmeister/kafka:2.11-2.0.0
@@ -22,16 +22,16 @@ services:
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     networks:
-    - telemetry-network
+      - telemetry-network
 
   eureka-server:
     image: telemetry/eureka-server:1.0.0-SNAPSHOT
     expose:
       - "8761"
     ports:
-    - "8761:8761"
+      - "8761:8761"
     networks:
-    - telemetry-network
+      - telemetry-network
 
   zuul-server:
     image: telemetry/zuul-server:1.0.0-SNAPSHOT
@@ -44,33 +44,35 @@ services:
     environment:
       EUREKA_URI: http://eureka-server:8761/eureka
     networks:
-    - telemetry-network
+      - telemetry-network
 
   data-storage-service:
     image: telemetry/data-storage-service:1.0.0-SNAPSHOT
     expose:
-      - "1-65535"
+      - "1212"
     depends_on:
       - kafka
       - zuul-server
     environment:
       EUREKA_URI: http://eureka-server:8761/eureka
       KAFKA_HOST_PORT: kafka:9092
+      SERVER_PORT: 1212
     networks:
-    - telemetry-network
+      - telemetry-network
 
   data-receiver-service:
     image: telemetry/data-receiver-service:1.0.0-SNAPSHOT
     expose:
-      - "1-65535"
+      - "1212"
     depends_on:
       - kafka
       - data-storage-service
     environment:
       EUREKA_URI: http://eureka-server:8761/eureka
       KAFKA_HOST_PORT: kafka:9092
+      SERVER_PORT: 1212
     networks:
-    - telemetry-network
+      - telemetry-network
 
 networks:
   telemetry-network:
