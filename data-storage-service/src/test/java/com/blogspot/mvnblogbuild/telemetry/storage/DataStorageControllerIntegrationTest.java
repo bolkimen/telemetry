@@ -1,7 +1,6 @@
 package com.blogspot.mvnblogbuild.telemetry.storage;
 
 import com.blogspot.mvnblogbuild.telemetry.commons.dto.DeviceDataDTO;
-import com.blogspot.mvnblogbuild.telemetry.storage.controller.DataStorageController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -23,13 +23,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DataStorageApplication.class)
 @AutoConfigureMockMvc
+@EmbeddedKafka(partitions = 1, controlledShutdown = false,
+        brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
 public class DataStorageControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
-
-    @Autowired
-    private DataStorageController dataReaderController;
 
     @MockBean
     private EurekaClient eurekaClient;
