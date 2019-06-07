@@ -52,20 +52,20 @@ services:
     networks:
       - telemetry-network
 
-#  data-storage-service:
-#    image: telemetry/data-storage-service:1.0.0-SNAPSHOT
-#    restart: always
-#    expose:
-#      - "1212"
-#    depends_on:
-#      - kafka
-#      - zuul-server
-#    environment:
-#      EUREKA_URI: http://eureka-server:8761/eureka
-#      KAFKA_HOST_PORT: kafka:9092
-#      SERVER_PORT: 1212
-#    networks:
-#      - telemetry-network
+  data-storage-service:
+    image: telemetry/data-storage-service:1.0.0-SNAPSHOT
+    restart: always
+    expose:
+      - "1212"
+    depends_on:
+      - kafka
+      - zuul-server
+    environment:
+      EUREKA_URI: http://eureka-server:8761/eureka
+      KAFKA_HOST_PORT: kafka:9092
+      SERVER_PORT: 1212
+    networks:
+      - telemetry-network
 
   data-receiver-service:
     image: telemetry/data-receiver-service:1.0.0-SNAPSHOT
