@@ -6,6 +6,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Check this https://habr.com/ru/post/440400/
+ */
 @SpringBootApplication
 public class KafkaTestApplication implements CommandLineRunner {
 
