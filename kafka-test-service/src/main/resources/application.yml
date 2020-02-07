@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: data-receiver-service
+
+server:
+  port: ${SERVER_PORT:0}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+
+kafka:
+  servers:
+    config: ${KAFKA_HOST_PORT:localhost:9092}
+  topic: TTelemetry

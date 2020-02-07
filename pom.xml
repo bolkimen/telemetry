@@ -13,10 +13,10 @@
     <modules>
         <module>zuul-server</module>
         <module>eureka-server</module>
-	    <module>data-receiver-service</module>
+        <module>data-receiver-service</module>
         <module>data-storage-service</module>
         <module>data-producer</module>
-        <module>commons</module>
+	    <module>commons</module>
     </modules>
 
     <properties>
