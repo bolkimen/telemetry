@@ -16,7 +16,7 @@
         <module>data-receiver-service</module>
         <module>data-storage-service</module>
         <module>data-producer</module>
-	    <module>commons</module>
+        <module>commons</module>
     </modules>
 
     <properties>
